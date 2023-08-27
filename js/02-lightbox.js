@@ -7,7 +7,7 @@ const createMarkup = galleryItems.map(({preview, original, description}) =>
     `<li class="gallery__item">
   <a class="gallery_link" href="${original}">
     <img
-      class="gallery_image"
+      class="gallery__image"
       src="${preview}"
       data-source="${original}"
       alt="${description}"

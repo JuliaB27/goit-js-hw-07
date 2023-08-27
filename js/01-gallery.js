@@ -6,9 +6,9 @@ import { galleryItems } from './gallery-items.js';
 const gallery = document.querySelector('.gallery');
 const createMarkup = galleryItems.map(({preview, original, description}) => 
     `<li class="gallery__item">
-  <a class="gallery_link" href="${original}">
+  <a class="gallery__link" href="${original}">
     <img
-      class="gallery_image"
+      class="gallery__image"
       src="${preview}"
       data-source="${original}"
       alt="${description}"
@@ -19,16 +19,14 @@ const createMarkup = galleryItems.map(({preview, original, description}) =>
 
 gallery.insertAdjacentHTML('beforeend', createMarkup);
 
-const links = document.querySelectorAll('.gallery_image');
-links.forEach((link) => {
-    link.addEventListener('click', (event) => event.preventDefault())
-});
+
 
 gallery.addEventListener('click', handlerClick);
 
 function handlerClick(evt) {
-    if(evt.target.classList.contains("gallery_image")) {
-        const imageUrl = evt.target.dataset.sourse;
+  evt.preventDefault();
+    if(evt.target.classList.contains("gallery__image")) {
+        const imageUrl = evt.target.dataset.source;
         openModal(imageUrl);
     }
 };
